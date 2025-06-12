@@ -203,13 +203,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const users = JSON.parse(localStorage.getItem("users") || "{}");
   if (saved && users[saved]) {
     currentUser = saved;
+    // Luôn ẩn auth, hiện app
     if (document.getElementById("auth-screen")) {
       document.getElementById("auth-screen").style.display = "none";
-      document.getElementById("app-screen").style.display = "block";
-      if (document.getElementById("task-date")) loadTasks();
     }
-    if (document.getElementById("all-tasks-list")) {
-      showAllTasks();
+    if (document.getElementById("app-screen")) {
+      document.getElementById("app-screen").style.display = "block";
+    }
+    if (document.getElementById("task-date")) loadTasks();
+    if (document.getElementById("all-tasks-list")) showAllTasks();
+  } else {
+    // Nếu chưa đăng nhập, luôn hiện auth, ẩn app
+    if (document.getElementById("auth-screen")) {
+      document.getElementById("auth-screen").style.display = "flex";
+    }
+    if (document.getElementById("app-screen")) {
+      document.getElementById("app-screen").style.display = "none";
     }
   }
 });
