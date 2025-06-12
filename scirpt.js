@@ -23,7 +23,7 @@ function register() {
     return;
   }
 
-  const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$/;
+  const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   if (!passRegex.test(pass)) {
     document.getElementById('login-error').textContent =
       'Mật khẩu phải có ít nhất 8 ký tự, gồm chữ hoa, thường, số và ký tự đặc biệt';
@@ -109,6 +109,7 @@ function loadTasks() {
 
   const tasksWithIndex = originTasks.map((task, i) => ({ ...task, originalIndex: i }));
   tasksWithIndex.sort((a, b) => b.priority - a.priority);
+
   const priorityTextMap = { 3: 'Cao', 2: 'Trung bình', 1: 'Thấp' };
 
   tasksWithIndex.forEach((task) => {
@@ -131,8 +132,12 @@ function loadTasks() {
     const trashBtn = document.createElement('i');
     trashBtn.className = 'fa-solid fa-trash';
     trashBtn.onclick = () => {
-      originTasks.splice(task.originalIndex, 1);
-      users[currentUser].tasks[taskDate] = originTasks;
+      tasksWithIndex.splice(task.originalIndex, 1);
+      users[currentUser].tasks[taskDate] = tasksWithIndex.map(task => ({
+        content: task.content,
+        priority: task.priority,
+        completed: task.completed
+      }));
       localStorage.setItem('users', JSON.stringify(users));
       loadTasks();
     };
@@ -152,13 +157,16 @@ function showAllTasks() {
     return;
   }
 
-  container.innerHTML = "";
   const allTasks = users[currentUser].tasks;
   const sortedDates = Object.keys(allTasks).sort();
+
   const priorityTextMap = { 3: 'Cao', 2: 'Trung bình', 1: 'Thấp' };
+  container.innerHTML = '';
 
   sortedDates.forEach(date => {
-    const tasks = [...allTasks[date]].sort((a, b) => b.priority - a.priority);
+    const tasks = [...allTasks[date]];
+    tasks.sort((a, b) => b.priority - a.priority);
+
     const section = document.createElement("div");
     section.innerHTML = `<h3>Ngày ${date}</h3>`;
     const ul = document.createElement("ul");
@@ -194,6 +202,7 @@ function showAllTasks() {
 
       icons.appendChild(checkbox);
       icons.appendChild(trash);
+
       li.appendChild(span);
       li.appendChild(icons);
       ul.appendChild(li);
