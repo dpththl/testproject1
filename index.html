@@ -7,33 +7,63 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 <body>
-  <header class="navbar">
-    <div class="nav-left">
-      <a href="index.html" class="nav-item">Trang chủ</a>
-      <a href="all-tasks.html" class="nav-item">Tất cả công việc</a>
-    </div>
-    <div class="nav-right">
-      <a href="#" class="logout-btn" onclick="logout()">Đăng xuất</a>
-    </div>
-  </header>
 
-  <main class="main-container">
-    <section class="task-form">
-      <input type="date" id="task-date" />
-      <input id="task-input" placeholder="Nội dung" />
-      <select id="priority-select">
-        <option value="high">Ưu tiên cao</option>
-        <option value="medium">Trung bình</option>
-        <option value="low">Thấp</option>
-      </select>
-      <button onclick="addTask(event)">Thêm công việc</button>
-    </section>
+  <!-- 🔐 Giao diện đăng nhập / đăng ký -->
+  <div id="auth-screen">
+    <div id="login-screen">
+      <form onsubmit="event.preventDefault(); login();">
+        <h2>Đăng nhập</h2>
+        <input id="username" placeholder="Tên đăng nhập" />
+        <input id="password" type="password" placeholder="Mật khẩu" />
+        <button type="submit">Đăng nhập</button>
+        <p>Bạn chưa có tài khoản? <a href="#" onclick="toggleAuth('register')">Đăng ký</a></p>
+      </form>
+    </div>
 
-    <section class="task-list-container">
-      <h2>Các công việc theo ngày đã chọn</h2>
-      <ul id="task-list"></ul>
-    </section>
-  </main>
+    <div id="register-screen" style="display: none;">
+      <form onsubmit="event.preventDefault(); register();">
+        <h2>Đăng ký</h2>
+        <input id="new-username" placeholder="Tài khoản mới" />
+        <input id="new-password" type="password" placeholder="Mật khẩu mới" />
+        <input id="confirm-password" type="password" placeholder="Nhập lại mật khẩu" />
+        <button type="submit">Tạo tài khoản</button>
+        <p>Đã có tài khoản? <a href="#" onclick="toggleAuth('login')">Đăng nhập</a></p>
+      </form>
+    </div>
+
+    <p id="login-error" style="color: red;"></p>
+  </div>
+
+  <!-- 🏠 Giao diện trang chính -->
+  <div id="app-screen" style="display: none;">
+    <header class="navbar">
+      <div class="nav-left">
+        <a href="index.html" class="nav-item">Trang chủ</a>
+        <a href="all-tasks.html" class="nav-item">Tất cả công việc</a>
+      </div>
+      <div class="nav-right">
+        <a href="#" class="logout-btn" onclick="logout()">Đăng xuất</a>
+      </div>
+    </header>
+
+    <main class="main-container">
+      <section class="task-form">
+        <input type="date" id="task-date" />
+        <input id="task-input" placeholder="Nội dung" />
+        <select id="priority-select">
+          <option value="high">Ưu tiên cao</option>
+          <option value="medium">Trung bình</option>
+          <option value="low">Thấp</option>
+        </select>
+        <button onclick="addTask(event)">Thêm công việc</button>
+      </section>
+
+      <section class="task-list-container">
+        <h2>Các công việc theo ngày đã chọn</h2>
+        <ul id="task-list"></ul>
+      </section>
+    </main>
+  </div>
 
   <script src="script.js"></script>
 </body>

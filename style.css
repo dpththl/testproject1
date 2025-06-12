@@ -1,13 +1,78 @@
 * {
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 body {
   margin: 0;
-  background: #ffffff;
+  background: #b3ffd9;
 }
 
+/* === Đăng nhập / Đăng ký === */
+#auth-screen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#login-screen,
+#register-screen {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  color: #2a7f62;
+}
+
+#login-screen h2,
+#register-screen h2 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 900;
+  color: #2a7f62;
+}
+
+#login-screen input,
+#register-screen input,
+#login-screen button,
+#register-screen button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+#login-screen button,
+#register-screen button {
+  background-color: #f0f0f0;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#login-screen button:hover,
+#register-screen button:hover {
+  background-color: #d9f5e2;
+}
+
+#login-screen a,
+#register-screen a {
+  color: #1b4d3e;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#login-error {
+  text-align: center;
+  margin-top: 10px;
+  color: red;
+}
+
+/* === Navbar === */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -24,6 +89,7 @@ body {
   font-weight: bold;
 }
 
+/* === Trang chính và tất cả công việc === */
 .main-container {
   display: flex;
   padding: 20px;
@@ -48,6 +114,7 @@ body {
   background: #0e4274;
   color: white;
   border: none;
+  border-radius: 6px;
   cursor: pointer;
 }
 
@@ -91,4 +158,5 @@ ul#task-list {
 
 .task-icons i {
   cursor: pointer;
+  color: #0e4274;
 }

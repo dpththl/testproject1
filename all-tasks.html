@@ -7,22 +7,27 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 <body>
-  <header class="navbar">
-    <div class="nav-left">
-      <a href="index.html" class="nav-item">Trang chủ</a>
-      <a href="all-tasks.html" class="nav-item">Tất cả công việc</a>
-    </div>
-    <div class="nav-right">
-      <a href="#" class="logout-btn" onclick="logout()">Đăng xuất</a>
-    </div>
-  </header>
 
-  <main class="main-container">
-    <section class="task-list-container full-width">
-      <h2>Tất cả các công việc đã được thêm</h2>
-      <div id="all-tasks-list"></div>
-    </section>
-  </main>
+  <!-- 🧭 Menu điều hướng -->
+  <div id="app-screen">
+    <header class="navbar">
+      <div class="nav-left">
+        <a href="index.html" class="nav-item">Trang chủ</a>
+        <a href="all-tasks.html" class="nav-item">Tất cả công việc</a>
+      </div>
+      <div class="nav-right">
+        <a href="#" class="logout-btn" onclick="logout()">Đăng xuất</a>
+      </div>
+    </header>
+
+    <!-- 📋 Danh sách toàn bộ công việc -->
+    <main class="main-container">
+      <section class="task-list-container full-width">
+        <h2>Tất cả các công việc đã được thêm</h2>
+        <div id="all-tasks-list"></div>
+      </section>
+    </main>
+  </div>
 
   <script src="script.js"></script>
   <script>
