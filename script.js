@@ -1,4 +1,4 @@
-let currentUser = null;
+let currentUser = localStorage.getItem('currentUser') || null;
 
 function toggleAuth(mode) {
   document.getElementById('login-screen').style.display = mode === 'login' ? 'block' : 'none';
