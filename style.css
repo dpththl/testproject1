@@ -1,0 +1,132 @@
+* {
+  font-family: 'Courier New', Courier, monospace;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #acfac8;
+  font-size: 20px;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.centered-auth {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #acfac8;
+}
+
+#login-screen, #register-screen {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  color: #0e4274;
+}
+
+input, select, button {
+  width: 100%;
+  font-size: 18px;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+a {
+  font-weight: 600;
+  text-decoration: none;
+  color: #0e4274;
+}
+
+h2 {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 900;
+  color: #2a7f62;
+  margin-top: 20px;
+}
+
+#app-screen {
+  background-color: #0e4274;
+  color: white;
+  height: 100vh;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+#app-screen h2 {
+  color: #fff3b0;
+}
+
+#app-screen input, #app-screen select {
+  background-color: white;
+  color: #0e4274;
+}
+
+#app-screen button {
+  background-color: white;
+  color: #0e4274;
+}
+
+#task-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  color: #0e4274;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.completed-text {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.task-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.task-icons i {
+  font-size: 20px;
+  color: #0e4274;
+  cursor: pointer;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.nav-links a {
+  margin-right: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+.logout-btn {
+  background: none;
+  border: 2px solid white;
+  padding: 8px 16px;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
