@@ -46,6 +46,7 @@ function login() {
 
   if (users[u] && users[u].password === p) {
     currentUser = u;
+    localStorage.setItem('currentUser', currentUser);
     document.getElementById('auth-screen').style.display = 'none';
     document.getElementById('app-screen').style.display = 'block';
     if (document.getElementById('task-date')) loadTasks();
@@ -56,6 +57,7 @@ function login() {
 
 function logout() {
   currentUser = null;
+  localStorage.removeItem('currentUser');
   document.getElementById('auth-screen').style.display = 'flex';
   document.getElementById('app-screen').style.display = 'none';
 }
@@ -194,3 +196,20 @@ function showAllTasks() {
     container.appendChild(section);
   });
 }
+
+// 🔁 Tự động khôi phục trạng thái nếu người dùng đã đăng nhập trước đó
+document.addEventListener("DOMContentLoaded", () => {
+  const saved = localStorage.getItem("currentUser");
+  const users = JSON.parse(localStorage.getItem("users") || "{}");
+  if (saved && users[saved]) {
+    currentUser = saved;
+    if (document.getElementById("auth-screen")) {
+      document.getElementById("auth-screen").style.display = "none";
+      document.getElementById("app-screen").style.display = "block";
+      if (document.getElementById("task-date")) loadTasks();
+    }
+    if (document.getElementById("all-tasks-list")) {
+      showAllTasks();
+    }
+  }
+});
