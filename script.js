@@ -221,4 +221,9 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("app-screen").style.display = "none";
     }
   }
+
+  const dateInput = document.getElementById("task-date");
+  if (dateInput) {
+    dateInput.addEventListener("change", loadTasks);
+  }
 });
