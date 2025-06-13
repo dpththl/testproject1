@@ -227,3 +227,27 @@ document.addEventListener("DOMContentLoaded", () => {
     dateInput.addEventListener("change", loadTasks);
   }
 });
+
+// ⏰ Tự động đăng xuất sau 10 phút không hoạt động
+let logoutTimer;
+const AUTO_LOGOUT_TIME = 10 * 60 * 1000; // 10 phút
+
+function resetLogoutTimer() {
+  clearTimeout(logoutTimer);
+  logoutTimer = setTimeout(() => {
+    alert("Bạn đã bị đăng xuất do không hoạt động quá lâu.");
+    logout();
+  }, AUTO_LOGOUT_TIME);
+}
+
+// Reset timer khi có thao tác
+["click", "keydown", "mousemove", "scroll", "touchstart"].forEach(evt => {
+  window.addEventListener(evt, resetLogoutTimer);
+});
+
+// Khởi động timer khi đăng nhập thành công
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("currentUser")) {
+    resetLogoutTimer();
+  }
+});
